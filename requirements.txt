@@ -1,0 +1,9 @@
+WINDOWS:
+windows-curses
+pyreadline3
+psutil
+
+LINUX:
+pycurses
+pyreadline
+psutil
