@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScoobyShellX - Releases & Extensions</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#0d1117;color:#c9d1d9;min-height:100vh}
+header{background:#161b22;border-bottom:1px solid #30363d;padding:24px 32px;display:flex;align-items:center;gap:16px}
+header h1{font-size:24px;font-weight:600;color:#f0f6fc}
+header span{color:#8b949e;font-size:14px}
+header a{color:#58a6ff;text-decoration:none;font-size:14px;margin-left:auto}
+.container{max-width:1200px;margin:0 auto;padding:32px}
+.section{margin-bottom:48px}
+.section h2{font-size:20px;font-weight:600;color:#f0f6fc;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #21262d}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:20px;margin-bottom:16px}
+.card h3{font-size:16px;font-weight:600;color:#f0f6fc;margin-bottom:8px}
+.card .meta{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:#8b949e;margin-bottom:12px}
+.card .meta span{display:flex;align-items:center;gap:4px}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600;text-transform:uppercase}
+.badge-prerelease{background:#d2992200;border:1px solid #d29922;color:#d29922}
+.badge-release{background:#2ea04300;border:1px solid #2ea043;color:#2ea043}
+.card .body{font-size:14px;color:#c9d1d9;margin-bottom:12px;line-height:1.5;white-space:pre-wrap}
+.card .body:empty{display:none}
+.card .assets{display:flex;flex-wrap:wrap;gap:8px}
+.card .assets a{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;background:#21262d;border:1px solid #30363d;border-radius:6px;color:#58a6ff;text-decoration:none;font-size:13px;transition:.2s}
+.card .assets a:hover{background:#30363d;border-color:#58a6ff}
+.asset-info{font-size:11px;color:#8b949e;margin-left:4px}
+.extension-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.ext-card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:16px;display:flex;flex-direction:column;transition:.2s}
+.ext-card:hover{border-color:#58a6ff}
+.ext-card .ext-name{font-size:14px;font-weight:600;color:#f0f6fc;margin-bottom:6px;word-break:break-all}
+.ext-card .ext-meta{font-size:12px;color:#8b949e;margin-bottom:10px}
+.ext-card .ext-dl{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;background:#21262d;border:1px solid #30363d;border-radius:6px;color:#58a6ff;text-decoration:none;font-size:12px;width:fit-content;transition:.2s}
+.ext-card .ext-dl:hover{background:#30363d;border-color:#58a6ff}
+.loading{text-align:center;padding:48px;color:#8b949e}
+.error{text-align:center;padding:48px;color:#f85149}
+.footer{text-align:center;padding:24px;color:#8b949e;font-size:13px;border-top:1px solid #21262d}
+.btn{display:inline-block;padding:6px 14px;background:#21262d;border:1px solid #30363d;border-radius:6px;color:#c9d1d9;cursor:pointer;font-size:13px;transition:.2s;font-family:inherit}
+.btn:hover{background:#30363d}
+.btn.active{background:#1f6feb1a;border:1px solid #1f6feb;color:#58a6ff}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #21262d}
+.section-header h2{margin:0;padding:0;border:none}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ScoobyShellX</h1>
+  <span>kvxnomxyz/scoobyshellx</span>
+  <a href="https://github.com/kvxnomxyz/scoobyshellx" target="_blank">View on GitHub</a>
+</header>
+
+<div class="container">
+
+  <div class="section">
+    <div class="section-header">
+      <h2>Releases</h2>
+      <button class="btn" id="preBtn" onclick="togglePrereleases()">Show Pre-releases</button>
+    </div>
+    <div id="releases">Loading releases...</div>
+  </div>
+
+  <div class="section">
+    <h2>Extensions</h2>
+    <div id="extensions">Loading extensions...</div>
+  </div>
+
+</div>
+
+<div class="footer">Powered by GitHub API — <a href="https://github.com/kvxnomxyz/scoobyshellx" style="color:#58a6ff;text-decoration:none">kvxnomxyz/scoobyshellx</a></div>
+
+<script>
+function formatSize(bytes) {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+  return (bytes / 1048576).toFixed(1) + ' MB';
+}
+
+function formatDate(iso) {
+  return new Date(iso).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+let allReleases = [];
+let showPre = false;
+
+function togglePrereleases() {
+  showPre = !showPre;
+  document.getElementById('preBtn').textContent = showPre ? 'Hide Pre-releases' : 'Show Pre-releases';
+  document.getElementById('preBtn').classList.toggle('active', showPre);
+  renderReleases();
+}
+
+function renderReleases() {
+  const el = document.getElementById('releases');
+  let list = [...allReleases].sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+  if (!showPre) {
+    list = list.filter(r => !r.prerelease).slice(0, 3);
+  }
+  if (list.length === 0) { el.innerHTML = '<div class="card">No releases yet.</div>'; return; }
+  el.innerHTML = list.map(r => {
+    const badge = r.prerelease
+      ? '<span class="badge badge-prerelease">Pre-release</span>'
+      : '<span class="badge badge-release">Release</span>';
+    const body = r.body ? `<div class="body">${escapeHtml(r.body)}</div>` : '';
+    const assets = r.assets && r.assets.length > 0
+      ? '<div class="assets">' + r.assets.map(a =>
+          `<a href="${a.browser_download_url}" download>${a.name} <span class="asset-info">(${formatSize(a.size)})</span></a>`
+        ).join('') + '</div>'
+      : '';
+    return `<div class="card">
+      <h3>${escapeHtml(r.name)}</h3>
+      <div class="meta">
+        <span>${r.tag_name}</span>
+        <span>${formatDate(r.published_at)}</span>
+        <span>${badge}</span>
+        <span>${r.assets ? r.assets.reduce((s,a) => s + a.download_count, 0) : 0} downloads</span>
+      </div>
+      ${body}
+      ${assets}
+    </div>`;
+  }).join('');
+}
+
+async function loadReleases() {
+  const el = document.getElementById('releases');
+  try {
+    const res = await fetch('https://api.github.com/repos/kvxnomxyz/scoobyshellx/releases');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    allReleases = await res.json();
+    renderReleases();
+  } catch (e) {
+    el.innerHTML = `<div class="error">Failed to load releases: ${e.message}</div>`;
+  }
+}
+
+async function loadExtensions() {
+  const el = document.getElementById('extensions');
+  try {
+    const res = await fetch('https://api.github.com/repos/kvxnomxyz/scoobyshellx/contents/Extensions');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const files = (await res.json()).filter(f => f.name !== 'certlist.txt');
+    if (files.length === 0) { el.innerHTML = '<div class="card">No extensions found.</div>'; return; }
+    el.innerHTML = '<div class="extension-grid">' + files.map(f =>
+      `<div class="ext-card" onclick="downloadFile('${f.download_url}','${escapeHtml(f.name)}')" style="cursor:pointer">
+        <div class="ext-name">${escapeHtml(f.name)}</div>
+        <div class="ext-meta">${formatSize(f.size)}</div>
+        <span class="ext-dl">Download</span>
+      </div>`
+    ).join('') + '</div>';
+  } catch (e) {
+    el.innerHTML = `<div class="error">Failed to load extensions: ${e.message}</div>`;
+  }
+}
+
+async function downloadFile(url, name) {
+  try {
+    const res = await fetch(url);
+    const blob = await res.blob();
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+  } catch (e) {
+    alert('Download failed: ' + e.message);
+  }
+}
+
+function escapeHtml(text) {
+  const d = document.createElement('div');
+  d.textContent = text;
+  return d.innerHTML;
+}
+
+loadReleases();
+loadExtensions();
+</script>
+</body>
+</html>
