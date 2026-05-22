@@ -1,39 +1,83 @@
-aid=com.kvxnom.arena2
-name=ARENA.EXE — Open World Multiplayer
+# ScoobyShellX Certificate List
+# Each block is a certificate entry for a signed UEXT extension.
+# ---
+
+aid=com.kvxnom.among_us_cli
+name=AMONG US CLI
 author=kvxnom
-certcode=PLACEHOLDER_ARENA2
+certcode=2F7351AF9DB616F18C65783F52B0CC9D88D75351EA70485C155AEA26C044C3BC
+version=1.2
+flags=signed,official
+revoked=false
+
+aid=com.kvxnom.arena2
+name=ARENA.EXE -- Open World Multiplayer
+author=kvxnom
+certcode=D164E4362B4CF04F0CAD13B079EE5A4D0AED939FBFF95B9256FB87E58898C174
 version=2.1
+flags=signed,official
+revoked=false
+
+aid=com.kvxnom.dungeon
+name=DUNGEON.EXE v3.0 -- Multiplayer Edition
+author=kvxnom
+certcode=82428494606D4E1A04A8C9DA326BDF3A36AD2D272D0C24E10DA537083361731D
+version=2.1
+flags=signed,official
+revoked=false
+
+aid=com.kvxnom.qrgen
+name=QRgen
+author=kvxnom
+certcode=1CFAF9262B96D058D168E59E5CF5ABCF9AB422681CC635269F36F7DAF8C72E6F
+version=1.0
+flags=signed,official
+revoked=false
+
+aid=com.kvxnom.road_fury
+name=ROAD FURY (KX Racer)
+author=kvxnom
+certcode=FE2DE5D5F550BCB3FE443C4576C46F44DA0805622D9724507F3642AB61D0C973
+version=1.0
 flags=signed,official
 revoked=false
 
 aid=com.kvxnom.tape_maniac
 name=TAPE MANIAC
 author=kvxnom
-certcode=PLACEHOLDER_TAPE
+certcode=C7CB24A958ABD26BE708EAC42ABB773942891B45A37DB00AD7F393F367A77F59
 version=1.1
 flags=signed,official
 revoked=false
 
-aid=com.kvxnom.road_fury
-name=ROAD FURY
+aid=com.kvxnom.tkbuilder
+name=TkBuilder -- CLI Tkinter App Builder
 author=kvxnom
-certcode=PLACEHOLDER_ROAD
+certcode=49A65B93B493623272B64AEB1E485575D9AA8A6A348D03B7400F8C62E24F7F10
 version=1.0
 flags=signed,official
 revoked=false
 
-aid=com.kvxnom.among_us_cli
-name=AMONG US CLI
+aid=com.kvxnom.vexplorer
+name=vExplorer
 author=kvxnom
-certcode=PLACEHOLDER_AMONG
-version=1.2
+certcode=11FA95914E1A31F317A6D03BDEB4EAF00CD7850434A2C472111F131E7165E177
+version=1.0
+flags=signed,official
+revoked=false
+
+aid=com.kvxnom.wintool
+name=WinTool
+author=kvxnom
+certcode=3F000519C0E1C137FDF2A2CCB08A0460B58E2DCACA71317A9F6CCFF79ADED6DD
+version=1.0
 flags=signed,official
 revoked=false
 
 aid=com.kvxnom.xengine
 name=XEngine
 author=kvxnom
-certcode=PLACEHOLDER_XENGINE
+certcode=4757C50D792DD52B14B9505828ADD425369A102801AF0881C657402DA4C7B7C6
 version=1.0
 flags=signed,official
 revoked=false
