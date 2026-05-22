@@ -1,1 +1,39 @@
-k3MUuPI2FSisOZDNUSJykBCabTGpv18C(aid:dungeon)
+aid=com.kvxnom.arena2
+name=ARENA.EXE — Open World Multiplayer
+author=kvxnom
+certcode=PLACEHOLDER_ARENA2
+version=2.1
+flags=signed,official
+revoked=false
+
+aid=com.kvxnom.tape_maniac
+name=TAPE MANIAC
+author=kvxnom
+certcode=PLACEHOLDER_TAPE
+version=1.1
+flags=signed,official
+revoked=false
+
+aid=com.kvxnom.road_fury
+name=ROAD FURY
+author=kvxnom
+certcode=PLACEHOLDER_ROAD
+version=1.0
+flags=signed,official
+revoked=false
+
+aid=com.kvxnom.among_us_cli
+name=AMONG US CLI
+author=kvxnom
+certcode=PLACEHOLDER_AMONG
+version=1.2
+flags=signed,official
+revoked=false
+
+aid=com.kvxnom.xengine
+name=XEngine
+author=kvxnom
+certcode=PLACEHOLDER_XENGINE
+version=1.0
+flags=signed,official
+revoked=false
