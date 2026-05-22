@@ -2,6 +2,9 @@
     "name": "Tape Maniac",
     "author": "kvxnom (Game design), Claude (Code)",
     "version": "1.0",
+    "sig_ver": 2,
+    "aid": "com.kvxnom.tape_maniac",
+    "certcode": "C7CB24A958ABD26BE708EAC42ABB773942891B45A37DB00AD7F393F367A77F59",
     "description": "Tape factory idle/clicker. Spam R to roll tape. Progress bar, upgrades, achievements, auto-rollers, paste.rs multiplayer, save/load. Command: tape",
     "commands": [
         {

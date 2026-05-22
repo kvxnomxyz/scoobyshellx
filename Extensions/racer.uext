@@ -2,6 +2,9 @@
     "name": "KX Racer",
     "author": "kvxnom (Game design), Claude (Code)",
     "version": "1.0",
+    "sig_ver": 2,
+    "aid": "com.kvxnom.road_fury",
+    "certcode": "FE2DE5D5F550BCB3FE443C4576C46F44DA0805622D9724507F3642AB61D0C973",
     "description": "GT1-style pseudo-3D road racer in curses. 5 cars (Civic/Supra/GTR/Viper/F40), 3 tracks, lap timer, best-lap save, paste.rs MP rivals. W/S=gas/brake A/D=steer. Command: race",
     "commands": [
         {

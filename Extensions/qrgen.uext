@@ -2,6 +2,9 @@
     "name": "QRgen",
     "author": "kvxnom",
     "version": "1.0_initial",
+    "sig_ver": 2,
+    "aid": "com.kvxnom.qrgen",
+    "certcode": "1CFAF9262B96D058D168E59E5CF5ABCF9AB422681CC635269F36F7DAF8C72E6F",
     "description": "QR Code Generator | Requires: qrcode[pil]  python-barcode  Pillow",
     "commands": [
         {

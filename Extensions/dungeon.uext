@@ -2,6 +2,9 @@
     "name": "DUNGEON.EXE v3.0 — Multiplayer Edition",
     "author": "kvxnom (Game design), Claude (Pastebin API Config)",
     "version": "2.1_MULTIPLAYER",
+    "sig_ver": 2,
+    "aid": "com.kvxnom.dungeon",
+    "certcode": "82428494606D4E1A04A8C9DA326BDF3A36AD2D272D0C24E10DA537083361731D",
     "description": "100-floor roguelike race. Host sets goal floor, gold cap, item bans. Syncs via paste.rs (no auth, auto-creates & auto-deletes). First to beat the goal boss wins. Command: dungeon_mp",
     "commands": [
         {

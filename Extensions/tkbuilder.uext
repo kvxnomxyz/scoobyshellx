@@ -2,6 +2,9 @@
     "name": "TkBuilder \u2014 CLI Tkinter App Builder",
     "author": "kvxnom (Code), Claude 4.6 (Designing UEXT, UNICODEFix)",
     "version": "1.0",
+    "sig_ver": 2,
+    "aid": "com.kvxnom.tkbuilder",
+    "certcode": "49A65B93B493623272B64AEB1E485575D9AA8A6A348D03B7400F8C62E24F7F10",
     "description": "Interactive CLI builder for Tkinter GUIs. Place widgets on a canvas, configure every property, then export a complete working Python/Tkinter script. Command: tkbuilder",
     "commands": [
         {

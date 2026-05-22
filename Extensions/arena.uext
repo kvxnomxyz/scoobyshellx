@@ -2,6 +2,9 @@
     "name": "ARENA.EXE \u2014 Open World Multiplayer",
     "author": "kvxnom (Game design), Claude (Code)",
     "version": "2.1_FEATURES",
+    "sig_ver": 2,
+    "aid": "com.kvxnom.arena2",
+    "certcode": "D164E4362B4CF04F0CAD13B079EE5A4D0AED939FBFF95B9256FB87E58898C174",
     "description": "MS-DOS style open world arena. Explore procedural maps, fight enemies, loot chests. Difficulty levels (save/load .a2sf), shop (U), pickaxe to mine trees. First to kill goal wins. curses-based, paste.rs sync. Command: arena2",
     "commands": [
         {

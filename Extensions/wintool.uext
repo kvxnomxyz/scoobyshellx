@@ -2,6 +2,9 @@
     "name": "WinTool",
     "author": "by kvxnom (also xmvkspl) for Ibrahim Tech Tips (@ibtechhub)",
     "version": "1.0",
+    "sig_ver": 2,
+    "aid": "com.kvxnom.wintool",
+    "certcode": "3F000519C0E1C137FDF2A2CCB08A0460B58E2DCACA71317A9F6CCFF79ADED6DD",
     "description": "Windows optimizer for Ibrahim Tech Tips",
     "commands": [
         {

@@ -2,6 +2,9 @@
     "name": "vExplorer",
     "author": "kvxnom",
     "version": "1.0",
+    "sig_ver": 2,
+    "aid": "com.kvxnom.vexplorer",
+    "certcode": "11FA95914E1A31F317A6D03BDEB4EAF00CD7850434A2C472111F131E7165E177",
     "description": "AnyDesk-style curses file explorer for Scooby Shell. Browse, preview, edit, copy/cut/paste, rename, mkdir, load .uext files. Command: vex",
     "commands": [
         {
