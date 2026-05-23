@@ -8,7 +8,7 @@ author=kvxnom
 certcode=2F7351AF9DB616F18C65783F52B0CC9D88D75351EA70485C155AEA26C044C3BC
 version=1.2
 flags=signed,official
-revoked=false
+revoked=true
 
 aid=com.kvxnom.arena2
 name=ARENA.EXE -- Open World Multiplayer
