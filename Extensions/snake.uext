@@ -1,0 +1,17 @@
+{
+    "name": "Snake Game",
+    "author": "kvxnom",
+    "version": "1.0",
+    "sig_ver": 2,
+    "aid": "com.kvxnom.snake",
+    "certcode": "88A69F82EB93F3277CDFAB117A434892E0A87CD6887951E3FA782E571697DC93",
+    "description": "Classic snake game. Eat food (@), grow longer, avoid walls and yourself. Arrow keys / WASD to move, Q to quit.",
+    "commands": [
+        {
+            "name": "snake",
+            "description": "Launch Snake game in terminal",
+            "action": "python",
+            "value": "def _game():\n    import curses, random, time\n    def play(stdscr):\n        curses.curs_set(0)\n        stdscr.nodelay(1)\n        stdscr.timeout(100)\n        h, w = stdscr.getmaxyx()\n        if h < 10 or w < 20:\n            stdscr.addstr(0, 0, \"Terminal too small, resize to at least 20x10\")\n            stdscr.refresh()\n            time.sleep(2)\n            return\n        snake = [(h//2, w//4)]\n        dirs = [(0,1), (0,-1), (1,0), (-1,0)]\n        d = 0\n        food = (random.randint(1, h-2), random.randint(1, w-2))\n        score = 0\n        while True:\n            stdscr.erase()\n            stdscr.border()\n            stdscr.addch(food[0], food[1], '@')\n            for i, s in enumerate(snake):\n                ch = 'O' if i == 0 else 'o'\n                stdscr.addch(s[0], s[1], ch)\n            stdscr.addstr(0, 2, f\" Snake {score} \")\n            stdscr.refresh()\n            key = stdscr.getch()\n            if key == curses.KEY_UP and d != 2: d = 2\n            elif key == curses.KEY_DOWN and d != 3: d = 3\n            elif key == curses.KEY_LEFT and d != 1: d = 1\n            elif key == curses.KEY_RIGHT and d != 0: d = 0\n            elif key == ord('w') and d != 2: d = 2\n            elif key == ord('s') and d != 3: d = 3\n            elif key == ord('a') and d != 1: d = 1\n            elif key == ord('d') and d != 0: d = 0\n            elif key == ord('q'): break\n            head = (snake[0][0] + dirs[d][0], snake[0][1] + dirs[d][1])\n            if head[0] <= 0 or head[0] >= h-1 or head[1] <= 0 or head[1] >= w-1:\n                break\n            if head in snake:\n                break\n            snake.insert(0, head)\n            if head == food:\n                score += 1\n                while True:\n                    food = (random.randint(1, h-2), random.randint(1, w-2))\n                    if food not in snake: break\n            else:\n                snake.pop()\n        stdscr.addstr(h//2, w//2-5, \"GAME OVER\")\n        stdscr.refresh()\n        time.sleep(1.5)\n    curses.wrapper(play)\n"
+        }
+    ]
+}

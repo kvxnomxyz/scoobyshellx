@@ -1,0 +1,17 @@
+{
+    "name": "Hangman",
+    "author": "kvxnom",
+    "version": "1.0",
+    "sig_ver": 2,
+    "aid": "com.kvxnom.hangman",
+    "certcode": "B0E29E89D496596180EBB0BCAD8D104DB344DCDEED29D9B6BC0F116D303BFD95",
+    "description": "Classic Hangman word-guessing game. Guess letters before the man is hanged. 6 wrong guesses and you lose!",
+    "commands": [
+        {
+            "name": "hangman",
+            "description": "Launch Hangman word game",
+            "action": "python",
+            "value": "def _game():\n    import random\n    words = [\"python\", \"scooby\", \"hangman\", \"terminal\", \"game\", \"code\", \"debug\", \"linux\", \"windows\", \"curses\", \"developer\", \"keyboard\", \"screen\", \"processor\", \"graphics\", \"network\", \"binary\", \"algorithm\", \"function\", \"variable\"]\n    HANGMAN = [\n        \"  +---+\\n  |   |\\n      |\\n      |\\n      |\\n      |\\n=========\",\n        \"  +---+\\n  |   |\\n  O   |\\n      |\\n      |\\n      |\\n=========\",\n        \"  +---+\\n  |   |\\n  O   |\\n  |   |\\n      |\\n      |\\n=========\",\n        \"  +---+\\n  |   |\\n  O   |\\n /|   |\\n      |\\n      |\\n=========\",\n        \"  +---+\\n  |   |\\n  O   |\\n /|\\\\  |\\n      |\\n      |\\n=========\",\n        \"  +---+\\n  |   |\\n  O   |\\n /|\\\\  |\\n /    |\\n      |\\n=========\",\n        \"  +---+\\n  |   |\\n  O   |\\n /|\\\\  |\\n / \\\\  |\\n      |\\n=========\",\n    ]\n    word = random.choice(words)\n    guessed = set()\n    wrong = 0\n    R = \"\\033[0m\"; G = \"\\033[92m\"; Y = \"\\033[93m\"; C = \"\\033[96m\"; Re = \"\\033[91m\"; B = \"\\033[1m\"\n    def display():\n        print(C + HANGMAN[min(wrong, len(HANGMAN)-1)] + R)\n        shown = \" \".join(c if c in guessed else \"_\" for c in word)\n        print(f\"\\n  {B}{shown}{R}\")\n        print(f\"\\n  Guessed: {', '.join(sorted(guessed)) if guessed else 'none'}\")\n        print(f\"  Wrong: {wrong}/{len(HANGMAN)-1}\")\n    print(f\"\\n  {B}{C}HANGMAN{R}\")\n    print(f\"  {Y}Guess the word! Type a letter (or 'quit' to exit).{R}\\n\")\n    while wrong < len(HANGMAN)-1:\n        display()\n        if all(c in guessed for c in word):\n            print(f\"\\n  {G}{B}You win! The word was: {word}{R}\")\n            return\n        guess = input(f\"\\n  {C}Letter: {R}\").strip().lower()\n        if guess == \"quit\":\n            print(f\"  {Y}The word was: {word}{R}\")\n            return\n        if len(guess) != 1 or not guess.isalpha():\n            print(f\"  {Re}Enter a single letter.{R}\")\n            continue\n        if guess in guessed:\n            print(f\"  {Y}Already guessed: {guess}{R}\")\n            continue\n        guessed.add(guess)\n        if guess in word:\n            print(f\"  {G}Correct!{R}\")\n        else:\n            wrong += 1\n            print(f\"  {Re}Wrong!{R}\")\n    print(C + HANGMAN[-1] + R)\n    print(f\"\\n  {Re}{B}Game Over! The word was: {word}{R}\")\n"
+        }
+    ]
+}
