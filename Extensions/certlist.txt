@@ -80,4 +80,4 @@ author=kvxnom
 certcode=4757C50D792DD52B14B9505828ADD425369A102801AF0881C657402DA4C7B7C6
 version=1.0
 flags=signed,official
-revoked=false
+revoked=true
