@@ -101,3 +101,4 @@ aid=app.flashyx.desktopcomposer
 name=Flashyx's Desktop Composer
 certcode=BD9854DD216F1376C109BB82C53C436220033B5C9FC2E7346ACE6FFA0D80A014
 version=1.0
+revoked=true
