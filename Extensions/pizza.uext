@@ -3,8 +3,8 @@
     "author": "kvxnom",
     "version": "1.0",
     "sig_ver": 2,
-    "aid": "com.kvxnom.pizza_tycoon",
-    "certcode": "PLACEHOLDER_PIZZA_TYCOON",
+    "aid": "com.kvxnom.pizzatycoon",
+    "certcode": "P8936HB2BD782976EN387DHE3723BD732VCJE63777",
     "description": "Pizza restaurant tycoon game. Make pizzas, sell them, buy upgrades, unlock recipes, and build your pizza empire!",
     "commands": [
         {
