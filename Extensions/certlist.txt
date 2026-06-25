@@ -104,7 +104,7 @@ version=1.0
 revoked=true
 
 aid=com.kvxnom.pizzatycoon
-name=Flashyx's Desktop Composer
+name=Pizza Tycoon
 certcode=P8936HB2BD782976EN387DHE3723BD732VCJE63777
 version=1.0
 revoked=false
