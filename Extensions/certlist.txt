@@ -102,3 +102,9 @@ name=Flashyx's Desktop Composer
 certcode=BD9854DD216F1376C109BB82C53C436220033B5C9FC2E7346ACE6FFA0D80A014
 version=1.0
 revoked=true
+
+aid=com.kvxnom.pizzatycoon
+name=Flashyx's Desktop Composer
+certcode=P8936HB2BD782976EN387DHE3723BD732VCJE63777
+version=1.0
+revoked=false
